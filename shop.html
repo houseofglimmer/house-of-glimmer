@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House of Glimmer - Shop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Milonga&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'milonga': ['Milonga', 'cursive'],
+                        'serif': ['Milonga', 'cursive'],
+                    },
+                    colors: {
+                        brandGold: '#F2A03D',
+                        brandLavender: '#A693BF',
+                        brandOlive: '#A6A056',
+                        brandNavy: '#111827',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Milonga', cursive;
+        }
+
+        .body-copy {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-serif {
+            font-family: 'Milonga', cursive;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .btn-glimmer {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .btn-glimmer::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-glimmer:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(17, 24, 39, 0.65) 0%, rgba(17, 24, 39, 0.75) 100%);
+        }
+
+        .section-background {
+            background: radial-gradient(circle at top right, rgba(166, 147, 191, 0.15), transparent 55%), radial-gradient(circle at bottom left, rgba(242, 160, 61, 0.12), transparent 45%);
+        }
+
+        /* Full-bleed utility to escape page padding */
+        .full-bleed {
+            width: 100vw;
+            margin-left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div id="header-container"></div>
+    <script src="header.js"></script>
+    <script>
+
+        function initHeader() {
+            // Header scroll effect
+            const header = document.getElementById('header');
+
+            if (header) {
+                window.addEventListener('scroll', () => {
+                    const currentScroll = window.pageYOffset;
+
+                    if (currentScroll > 100) {
+                        header.classList.add('shadow-lg');
+                    } else {
+                        header.classList.remove('shadow-lg');
+                    }
+                });
+
+                // Mobile menu toggle
+                const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+                const mobileMenu = document.getElementById('mobileMenu');
+
+                if (mobileMenuBtn && mobileMenu) {
+                    mobileMenuBtn.addEventListener('click', () => {
+                        mobileMenu.classList.toggle('hidden');
+                    });
+                }
+            }
+        }
+    </script>
+
+    <section id="shop-hero" class="relative overflow-hidden full-bleed" style="height: 65vh; min-height: 360px; background-image: url('images/bedroom1.png'); background-size: cover; background-repeat: no-repeat; background-position: center center; background-color: #f2f2f2;">
+        <div id="hero-overlay" class="absolute inset-0 bg-black/20 transition-opacity duration-300"></div>
+        <div class="absolute inset-0 flex flex-col items-center justify-center px-6 text-center gap-4">
+            <h1 id="hero-title" class="text-5xl md:text-6xl font-serif text-white tracking-[0.25em] uppercase">Shop</h1>
+            <p id="hero-subtitle" class="text-white/80 text-lg md:text-xl leading-relaxed tracking-widest max-w-5xl">
+                Discover curated affiliate finds that bring layered warmth, shimmer, and whimsy into every corner of your home.
+            </p>
+        </div>
+    </section>
+
+    <section class="bg-white">
+        <div class="container mx-auto px-6 py-12 flex flex-wrap gap-4 items-center justify-between">
+            <div>
+                <p class="text-sm uppercase tracking-[0.4em] text-gray-500">Shop by charm</p>
+                <h2 class="text-2xl font-serif text-gray-900 mt-2">Glow-ready picks by room</h2>
+            </div>
+            <div class="flex flex-wrap gap-3">
+                <button data-filter="all" data-banner="images/BANNER.png" data-title="Shop" data-subtitle="Discover curated affiliate finds that bring layered warmth, shimmer, and whimsy into every corner of your home." class="filter-btn px-5 py-2 rounded-full border border-brandLavender bg-brandLavender text-white text-sm tracking-wide transition">All</button>
+                <button data-filter="living" data-banner="images/living.png" data-title="Living" data-subtitle="Layered textures, cozy throws, and glowing accents to welcome every guest." class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 text-sm tracking-wide hover:border-brandLavender hover:text-brandLavender transition">Living</button>
+                <button data-filter="kitchen" data-banner="images/kitchen.png" data-title="Kitchen" data-subtitle="Charming canisters, gleaming tea spoons, and sweet essentials for heart-of-home rituals." class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 text-sm tracking-wide hover:border-brandLavender hover:text-brandLavender transition">Kitchen</button>
+                <button data-filter="bedroom" data-banner="images/bedroom2.png" data-title="Bedroom" data-subtitle="Soft lighting, plush linens, and serene layers designed for dreamy unwinding." class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 text-sm tracking-wide hover:border-brandLavender hover:text-brandLavender transition">Bedroom</button>
+                <button data-filter="lighting" data-banner="images/dining.png" data-title="Lighting" data-subtitle="Glowing lanterns and ambient shimmer to set the perfect mood in any room." class="filter-btn px-5 py-2 rounded-full border border-gray-300 text-gray-700 text-sm tracking-wide hover:border-brandLavender hover:text-brandLavender transition">Lighting</button>
+            </div>
+        </div>
+    </section>
+
+    <main class="bg-gray-50 pb-20">
+        <div class="container mx-auto px-6">
+            <div class="grid gap-10 lg:grid-cols-4 md:grid-cols-2">
+
+                <article class="flex flex-col group" data-category="living">
+                    <a href="product.html?product=sidetable" class="block">
+                        <div class="h-[448px] bg-white">
+                            <img src="images/sidetable.jpg" alt="Two-tiered round side table" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                        </div>
+                    </a>
+                    <div class="p-6 flex flex-col flex-1">
+                            <div class="space-y-3 flex-1">
+                                <p class="text-sm uppercase tracking-[0.4em] text-gray-500">Living Room</p>
+                                <a href="product.html?product=sidetable" class="text-2xl font-serif text-gray-900 hover:text-brandLavender transition-colors">Midnight Round Side Table</a>
+                            <p class="text-gray-600 leading-relaxed body-copy">
+                                Slim black metal legs meet rich walnut shelves—perfect for stacked books, candles, and moonlit glow.
+                            </p>
+                        </div>
+                        <div class="mt-6 flex items-center justify-between">
+                            <span class="text-lg font-semibold text-brandGold">$19.99</span>
+                            <a href="https://amzn.to/47yjxiN" target="_blank" rel="noopener noreferrer" class="btn-glimmer inline-flex items-center px-5 py-2 border border-brandLavender text-brandLavender rounded-md tracking-wide hover:bg-brandLavender hover:text-white transition" aria-label="Buy Midnight Round Side Table">
+                                Buy Now
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="flex flex-col group" data-category="kitchen">
+                    <a href="product.html?product=kitchentools" class="block">
+                        <div class="h-[448px] bg-white">
+                            <img src="images/kitchentools.jpg" alt="Wooden teak cooking utensils set detail view" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                        </div>
+                    </a>
+                    <div class="p-6 flex flex-col flex-1">
+                        <div class="space-y-3 flex-1">
+                            <p class="text-sm uppercase tracking-[0.4em] text-gray-500">Kitchen</p>
+                            <a href="product.html?product=kitchentools" class="text-2xl font-serif text-gray-900 hover:text-brandLavender transition-colors">Wooden Spoons for Cooking (7-Piece Teak Set)</a>
+                            <p class="text-gray-600 leading-relaxed body-copy">
+                                Natural solid teak utensils with comfort grips; heat-safe for non-stick pans.
+                            </p>
+                        </div>
+                        <div class="mt-6 flex items-center justify-between">
+                            <span class="text-lg font-semibold text-brandGold">$22.99</span>
+                            <a href="https://amzn.to/4ojHguf" target="_blank" rel="noopener noreferrer" class="btn-glimmer inline-flex items-center px-5 py-2 border border-brandLavender text-brandLavender rounded-md tracking-wide hover:bg-brandLavender hover:text-white transition" aria-label="Buy Wooden Spoons for Cooking set" tabindex="0" onkeydown="if(event.key==='Enter'){ this.click(); }">
+                                Buy Now
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="flex flex-col group" data-category="kitchen">
+                    <a href="product.html?product=mushroom-paper-towel-holder" class="block">
+                        <div class="h-[448px] bg-white">
+                            <img src="images/mushroompapertowelholder.jpg" alt="Wooden mushroom paper towel holder on a counter" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                        </div>
+                    </a>
+                    <div class="p-6 flex flex-col flex-1">
+                        <div class="space-y-3 flex-1">
+                            <p class="text-sm uppercase tracking-[0.4em] text-gray-500">Kitchen</p>
+                            <a href="product.html?product=mushroom-paper-towel-holder" class="text-2xl font-serif text-gray-900 hover:text-brandLavender transition-colors">Whimsy Mushroom Paper Towel Holder</a>
+                            <p class="text-gray-600 leading-relaxed body-copy">
+                                Hand-carved wood with a mushroom cap finial turns an everyday roll into a charming countertop moment.
+                            </p>
+                        </div>
+                        <div class="mt-6 flex items-center justify-between">
+                            <span class="text-lg font-semibold text-brandGold">$21.50</span>
+                            <a href="https://amzn.to/4b2OrTI" target="_blank" rel="noopener noreferrer" class="btn-glimmer inline-flex items-center px-5 py-2 border border-brandLavender text-brandLavender rounded-md tracking-wide hover:bg-brandLavender hover:text-white transition" aria-label="Buy Whimsy Mushroom Paper Towel Holder" tabindex="0" onkeydown="if(event.key==='Enter'){ this.click(); }">
+                                Buy Now
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="flex flex-col group" data-category="living">
+                    <a href="product.html?product=botanical-calendar" class="block">
+                        <div class="h-[448px] bg-white">
+                            <img src="images/botanicalcalendar.jpg" alt="Botanical wall calendar 2026 with fruits design" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                        </div>
+                    </a>
+                    <div class="p-6 flex flex-col flex-1">
+                        <div class="space-y-3 flex-1">
+                            <p class="text-sm uppercase tracking-[0.4em] text-gray-500">Living Room</p>
+                            <a href="product.html?product=botanical-calendar" class="text-2xl font-serif text-gray-900 hover:text-brandLavender transition-colors">Botanical Wall Calendar 2026 12" x 12"</a>
+                            <p class="text-gray-600 leading-relaxed body-copy">
+                                12" x 12" FSC® plastic free wall calendar perfect for family planning, work, school, and keeping track of important dates.
+                            </p>
+                        </div>
+                        <div class="mt-6 flex items-center justify-between">
+                            <span class="text-lg font-semibold text-brandGold">$10.99</span>
+                            <a href="https://amzn.to/3NdqTBM" target="_blank" rel="noopener noreferrer" class="btn-glimmer inline-flex items-center px-5 py-2 border border-brandLavender text-brandLavender rounded-md tracking-wide hover:bg-brandLavender hover:text-white transition" aria-label="Buy Botanical Wall Calendar 2026" tabindex="0" onkeydown="if(event.key==='Enter'){ this.click(); }">
+                                Buy Now
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="flex flex-col group" data-category="living">
+                    <a href="product.html?product=round-table" class="block">
+                        <div class="h-[448px] bg-white">
+                            <img src="images/roundtable.jpg" alt="Round side table with solid wood legs for living room" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                        </div>
+                    </a>
+                    <div class="p-6 flex flex-col flex-1">
+                        <div class="space-y-3 flex-1">
+                            <p class="text-sm uppercase tracking-[0.4em] text-gray-500">Living Room</p>
+                            <a href="product.html?product=round-table" class="text-2xl font-serif text-gray-900 hover:text-brandLavender transition-colors">Round Side Table, Small Drink Table for Small Spaces</a>
+                            <p class="text-gray-600 leading-relaxed body-copy">
+                                Modern accent nightstand with solid wood leg featuring walnut-grain pattern. Compact design perfect for small spaces.
+                            </p>
+                        </div>
+                        <div class="mt-6 flex items-center justify-between">
+                            <span class="text-lg font-semibold text-brandGold">$39.99</span>
+                            <a href="https://amzn.to/4biqhou" target="_blank" rel="noopener noreferrer" class="btn-glimmer inline-flex items-center px-5 py-2 border border-brandLavender text-brandLavender rounded-md tracking-wide hover:bg-brandLavender hover:text-white transition" aria-label="Buy Round Side Table" tabindex="0" onkeydown="if(event.key==='Enter'){ this.click(); }">
+                                Buy Now
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="flex flex-col group" data-category="living">
+                    <a href="product.html?product=farmhouse-vase" class="block">
+                        <div class="h-[448px] bg-white">
+                            <img src="images/farmhousevase.jpg" alt="Farmhouse ceramic vase set of 3 vintage flower vases" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                        </div>
+                    </a>
+                    <div class="p-6 flex flex-col flex-1">
+                        <div class="space-y-3 flex-1">
+                            <p class="text-sm uppercase tracking-[0.4em] text-gray-500">Living Room</p>
+                            <a href="product.html?product=farmhouse-vase" class="text-2xl font-serif text-gray-900 hover:text-brandLavender transition-colors">Farmhouse Vase for Home Decor, Ceramic Vase Set of 3</a>
+                            <p class="text-gray-600 leading-relaxed body-copy">
+                                Vintage flower vase set of 3 with farmhouse ribbed design. Suitable for home decor, living room, shelf decor, dining table decor.
+                            </p>
+                        </div>
+                        <div class="mt-6 flex items-center justify-between">
+                            <span class="text-lg font-semibold text-brandGold">$29.99</span>
+                            <a href="https://amzn.to/4989rHD" target="_blank" rel="noopener noreferrer" class="btn-glimmer inline-flex items-center px-5 py-2 border border-brandLavender text-brandLavender rounded-md tracking-wide hover:bg-brandLavender hover:text-white transition" aria-label="Buy Farmhouse Vase Set of 3" tabindex="0" onkeydown="if(event.key==='Enter'){ this.click(); }">
+                                Buy Now
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="flex flex-col group" data-category="living">
+                    <a href="product.html?product=eucalyptus-plant" class="block">
+                        <div class="h-[448px] bg-white">
+                            <img src="images/eucalyptusplant.jpg" alt="Artificial eucalyptus stems in glass vase with faux water" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                        </div>
+                    </a>
+                    <div class="p-6 flex flex-col flex-1">
+                        <div class="space-y-3 flex-1">
+                            <p class="text-sm uppercase tracking-[0.4em] text-gray-500">Living Room</p>
+                            <a href="product.html?product=eucalyptus-plant" class="text-2xl font-serif text-gray-900 hover:text-brandLavender transition-colors">VIERENA 17.5" Artificial Eucalyptus Stems in Glass Vase</a>
+                            <p class="text-gray-600 leading-relaxed body-copy">
+                                Artificial eucalyptus stems in glass vase with faux water. Perfect for centerpiece table decorations, farmhouse wedding, home greenery decor.
+                            </p>
+                        </div>
+                        <div class="mt-6 flex items-center justify-between">
+                            <span class="text-lg font-semibold text-brandGold">$19.99</span>
+                            <a href="https://amzn.to/3N2dyMM" target="_blank" rel="noopener noreferrer" class="btn-glimmer inline-flex items-center px-5 py-2 border border-brandLavender text-brandLavender rounded-md tracking-wide hover:bg-brandLavender hover:text-white transition" aria-label="Buy Artificial Eucalyptus Stems" tabindex="0" onkeydown="if(event.key==='Enter'){ this.click(); }">
+                                Buy Now
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="flex flex-col group" data-category="living">
+                    <a href="product.html?product=hanging-plants" class="block">
+                        <div class="h-[448px] bg-white">
+                            <img src="images/hangingplants.jpg" alt="Fake hanging plants artificial pothos vines greenery" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                        </div>
+                    </a>
+                    <div class="p-6 flex flex-col flex-1">
+                        <div class="space-y-3 flex-1">
+                            <p class="text-sm uppercase tracking-[0.4em] text-gray-500">Living Room</p>
+                            <a href="product.html?product=hanging-plants" class="text-2xl font-serif text-gray-900 hover:text-brandLavender transition-colors">BLEUM CADE Fake Hanging Plants, 2pcs Artificial Hanging Plant</a>
+                            <p class="text-gray-600 leading-relaxed body-copy">
+                                2pcs artificial hanging plant, faux pothos vines greenery for wall home living room office indoor outdoor decor.
+                            </p>
+                        </div>
+                        <div class="mt-6 flex items-center justify-between">
+                            <span class="text-lg font-semibold text-brandGold">$9.98</span>
+                            <a href="https://amzn.to/4pqGWd8" target="_blank" rel="noopener noreferrer" class="btn-glimmer inline-flex items-center px-5 py-2 border border-brandLavender text-brandLavender rounded-md tracking-wide hover:bg-brandLavender hover:text-white transition" aria-label="Buy Fake Hanging Plants" tabindex="0" onkeydown="if(event.key==='Enter'){ this.click(); }">
+                                Buy Now
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="flex flex-col group" data-category="living">
+                    <a href="product.html?product=faux-blanket" class="block">
+                        <div class="h-[448px] bg-white">
+                            <img src="images/fauxblanket.jpg" alt="COOVA faux fur throw blanket cozy soft fuzzy plush rabbit fur bubble blanket" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                        </div>
+                    </a>
+                    <div class="p-6 flex flex-col flex-1">
+                        <div class="space-y-3 flex-1">
+                            <p class="text-sm uppercase tracking-[0.4em] text-gray-500">Living Room</p>
+                            <a href="product.html?product=faux-blanket" class="text-2xl font-serif text-gray-900 hover:text-brandLavender transition-colors">COOVA Faux Fur Throw Blanket for Couch</a>
+                            <p class="text-gray-600 leading-relaxed body-copy">
+                                Cozy soft and fuzzy plush rabbit fur bubble blanket for sofa bedroom living room. 50x60 inches made from 700GSM high-weight ultra-fine microfiber.
+                            </p>
+                        </div>
+                        <div class="mt-6 flex items-center justify-between">
+                            <span class="text-lg font-semibold text-brandGold">$37.99</span>
+                            <a href="https://amzn.to/49kTWeh" target="_blank" rel="noopener noreferrer" class="btn-glimmer inline-flex items-center px-5 py-2 border border-brandLavender text-brandLavender rounded-md tracking-wide hover:bg-brandLavender hover:text-white transition" aria-label="Buy COOVA Faux Fur Throw Blanket" tabindex="0" onkeydown="if(event.key==='Enter'){ this.click(); }">
+                                Buy Now
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="flex flex-col group" data-category="living">
+                    <a href="product.html?product=living-room-rug" class="block">
+                        <div class="h-[448px] bg-white">
+                            <img src="images/livingroomrug.jpg" alt="Black boho living room rug 5x7 washable dark vintage moody low pile non slip carpet" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                        </div>
+                    </a>
+                    <div class="p-6 flex flex-col flex-1">
+                        <div class="space-y-3 flex-1">
+                            <p class="text-sm uppercase tracking-[0.4em] text-gray-500">Living Room</p>
+                            <a href="product.html?product=living-room-rug" class="text-2xl font-serif text-gray-900 hover:text-brandLavender transition-colors">Black Boho Living Room Rug 5x7, Washable Dark Vintage Moody Low Pile</a>
+                            <p class="text-gray-600 leading-relaxed body-copy">
+                                Washable dark vintage moody low pile non slip carpet for bedroom, dining room, office, farmhouse, retro area rug indoor decor.
+                            </p>
+                        </div>
+                        <div class="mt-6 flex items-center justify-between">
+                            <span class="text-lg font-semibold text-brandGold">$47.48</span>
+                            <a href="https://amzn.to/45hnZT1" target="_blank" rel="noopener noreferrer" class="btn-glimmer inline-flex items-center px-5 py-2 border border-brandLavender text-brandLavender rounded-md tracking-wide hover:bg-brandLavender hover:text-white transition" aria-label="Buy Black Boho Living Room Rug" tabindex="0" onkeydown="if(event.key==='Enter'){ this.click(); }">
+                                Buy Now
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="flex flex-col group" data-category="kitchen">
+                    <a href="product.html?product=pendant-light" class="block">
+                        <div class="h-[448px] bg-white">
+                            <img src="images/pendantlight.jpg" alt="Tiffany pendant light with handmade agate slice artistic design" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                        </div>
+                    </a>
+                    <div class="p-6 flex flex-col flex-1">
+                        <div class="space-y-3 flex-1">
+                            <p class="text-sm uppercase tracking-[0.4em] text-gray-500">Kitchen</p>
+                            <a href="product.html?product=pendant-light" class="text-2xl font-serif text-gray-900 hover:text-brandLavender transition-colors">Tiffany Pendant Light Handmade Agate Slice Artistic Lamp</a>
+                            <p class="text-gray-600 leading-relaxed body-copy">
+                                A 12" Wabi Sabi vintage chandelier with raw agate slices that cast a rustic-yet-luxurious ambience when lit.
+                            </p>
+                        </div>
+                        <div class="mt-6 flex items-center justify-between">
+                            <span class="text-lg font-semibold text-brandGold">$199.00</span>
+                            <a href="https://amzn.to/497w1A8" target="_blank" rel="noopener noreferrer" class="btn-glimmer inline-flex items-center px-5 py-2 border border-brandLavender text-brandLavender rounded-md tracking-wide hover:bg-brandLavender hover:text-white transition" aria-label="Buy Tiffany Pendant Light" tabindex="0" onkeydown="if(event.key==='Enter'){ this.click(); }">
+                                Buy Now
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="flex flex-col group" data-category="kitchen">
+                    <a href="product.html?product=floral-rug" class="block">
+                        <div class="h-[448px] bg-white">
+                            <img src="images/floralrug.jpg" alt="Floral vintage distress print pattern area rug" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                        </div>
+                    </a>
+                    <div class="p-6 flex flex-col flex-1">
+                        <div class="space-y-3 flex-1">
+                            <p class="text-sm uppercase tracking-[0.4em] text-gray-500">Kitchen</p>
+                            <a href="product.html?product=floral-rug" class="text-2xl font-serif text-gray-900 hover:text-brandLavender transition-colors">Floral Vintage Distress Print Area Rug 8'x10'</a>
+                            <p class="text-gray-600 leading-relaxed body-copy">
+                                Machine washable, non-slip area rug with floral vintage distress print pattern medallion design.
+                            </p>
+                        </div>
+                        <div class="mt-6 flex items-center justify-between">
+                            <span class="text-lg font-semibold text-brandGold">$76.99</span>
+                            <a href="https://amzn.to/3N0MIVj" target="_blank" rel="noopener noreferrer" class="btn-glimmer inline-flex items-center px-5 py-2 border border-brandLavender text-brandLavender rounded-md tracking-wide hover:bg-brandLavender hover:text-white transition" aria-label="Buy Floral Vintage Distress Print Area Rug" tabindex="0" onkeydown="if(event.key==='Enter'){ this.click(); }">
+                                Buy Now
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="flex flex-col group" data-category="kitchen">
+                    <a href="product.html?product=blue-ceramic-vase" class="block">
+                        <div class="h-[448px] bg-white">
+                            <img src="images/bluebase.jpg" alt="Blue ceramic vase set of 3 small farmhouse vases" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                        </div>
+                    </a>
+                    <div class="p-6 flex flex-col flex-1">
+                        <div class="space-y-3 flex-1">
+                            <p class="text-sm uppercase tracking-[0.4em] text-gray-500">Kitchen</p>
+                            <a href="product.html?product=blue-ceramic-vase" class="text-2xl font-serif text-gray-900 hover:text-brandLavender transition-colors">Blue Ceramic Vase Set - 3 Blue Small Vases</a>
+                            <p class="text-gray-600 leading-relaxed body-copy">
+                                Farmhouse country flower vase home decor set perfect for table decoration, fireplace decor, and centerpieces.
+                            </p>
+                        </div>
+                        <div class="mt-6 flex items-center justify-between">
+                            <span class="text-lg font-semibold text-brandGold">$35.99</span>
+                            <a href="https://amzn.to/4aDzkjE" target="_blank" rel="noopener noreferrer" class="btn-glimmer inline-flex items-center px-5 py-2 border border-brandLavender text-brandLavender rounded-md tracking-wide hover:bg-brandLavender hover:text-white transition" aria-label="Buy Blue Ceramic Vase Set" tabindex="0" onkeydown="if(event.key==='Enter'){ this.click(); }">
+                                Buy Now
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="flex flex-col group" data-category="kitchen">
+                    <a href="product.html?product=drawer-organizer" class="block">
+                        <div class="h-[448px] bg-white">
+                            <img src="images/drawerorganizer.jpg" alt="Bamboo kitchen drawer organizer for silverware and utensils" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                        </div>
+                    </a>
+                    <div class="p-6 flex flex-col flex-1">
+                        <div class="space-y-3 flex-1">
+                            <p class="text-sm uppercase tracking-[0.4em] text-gray-500">Kitchen</p>
+                            <a href="product.html?product=drawer-organizer" class="text-2xl font-serif text-gray-900 hover:text-brandLavender transition-colors">ROYAL CRAFT WOOD Luxury Bamboo Kitchen Drawer Organizer</a>
+                            <p class="text-gray-600 leading-relaxed body-copy">
+                                Expandable bamboo drawer organizer with 9 compartments for silverware, utensils, and kitchen tools.
+                            </p>
+                        </div>
+                        <div class="mt-6 flex items-center justify-between">
+                            <span class="text-lg font-semibold text-brandGold">$39.97</span>
+                            <a href="https://amzn.to/4qF0NGp" target="_blank" rel="noopener noreferrer" class="btn-glimmer inline-flex items-center px-5 py-2 border border-brandLavender text-brandLavender rounded-md tracking-wide hover:bg-brandLavender hover:text-white transition" aria-label="Buy Bamboo Kitchen Drawer Organizer" tabindex="0" onkeydown="if(event.key==='Enter'){ this.click(); }">
+                                Buy Now
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="flex flex-col group" data-category="kitchen">
+                    <a href="product.html?product=fruit-basket" class="block">
+                        <div class="h-[448px] bg-white">
+                            <img src="images/fruitbasket.jpg" alt="Acacia wood 3 tier fruit basket for kitchen counter" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                        </div>
+                    </a>
+                    <div class="p-6 flex flex-col flex-1">
+                        <div class="space-y-3 flex-1">
+                            <p class="text-sm uppercase tracking-[0.4em] text-gray-500">Kitchen</p>
+                            <a href="product.html?product=fruit-basket" class="text-2xl font-serif text-gray-900 hover:text-brandLavender transition-colors">HOLANA Acacia 3 Tier Fruit Basket for Counter</a>
+                            <p class="text-gray-600 leading-relaxed body-copy">
+                                Wooden fruit bowl for kitchen counter organizer with premium acacia wood construction and 20LBS weight capacity.
+                            </p>
+                        </div>
+                        <div class="mt-6 flex items-center justify-between">
+                            <span class="text-lg font-semibold text-brandGold">$39.98</span>
+                            <a href="https://amzn.to/4spTTGx" target="_blank" rel="noopener noreferrer" class="btn-glimmer inline-flex items-center px-5 py-2 border border-brandLavender text-brandLavender rounded-md tracking-wide hover:bg-brandLavender hover:text-white transition" aria-label="Buy Acacia 3 Tier Fruit Basket" tabindex="0" onkeydown="if(event.key==='Enter'){ this.click(); }">
+                                Buy Now
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="flex flex-col group" data-category="kitchen">
+                    <a href="product.html?product=food-jars" class="block">
+                        <div class="h-[448px] bg-white">
+                            <img src="images/container.jpg" alt="Glass food storage jars with airtight bamboo wooden lids" class="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105">
+                        </div>
+                    </a>
+                    <div class="p-6 flex flex-col flex-1">
+                            <div class="space-y-3 flex-1">
+                            <p class="text-sm uppercase tracking-[0.4em] text-gray-500">Kitchen</p>
+                            <a href="product.html?product=food-jars" class="text-2xl font-serif text-gray-900 hover:text-brandLavender transition-colors">Vtopmart Glass Food Storage Jars, 7 Pack Kitchen Containers</a>
+                            <p class="text-gray-600 leading-relaxed body-copy">
+                                Set of 7 various sizes glass jars with airtight bamboo wooden lids for pasta, cookies, nuts, coffee beans, and pantry organization.
+                            </p>
+                        </div>
+                        <div class="mt-6 flex items-center justify-between">
+                            <span class="text-lg font-semibold text-brandGold">$25.19</span>
+                            <a href="https://amzn.to/3MXjiYa" target="_blank" rel="noopener noreferrer" class="btn-glimmer inline-flex items-center px-5 py-2 border border-brandLavender text-brandLavender rounded-md tracking-wide hover:bg-brandLavender hover:text-white transition" aria-label="Buy Glass Food Storage Jars Set" tabindex="0" onkeydown="if(event.key==='Enter'){ this.click(); }">
+                                Buy Now
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 py-12">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 mb-8">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">House of Glimmer</h3>
+                    <p class="text-gray-600 mb-6">Creating beautiful spaces, one piece at a time.</p>
+                    <div class="flex gap-4">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg border-2 border-gray-300 flex items-center justify-center hover:border-gray-400 transition-colors" aria-label="Facebook">
+                            <svg class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg border-2 border-gray-300 flex items-center justify-center hover:border-gray-400 transition-colors" aria-label="LinkedIn">
+                            <svg class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg border-2 border-gray-300 flex items-center justify-center hover:border-gray-400 transition-colors" aria-label="YouTube">
+                            <svg class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg border-2 border-gray-300 flex items-center justify-center hover:border-gray-400 transition-colors" aria-label="Instagram">
+                            <svg class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-4">Shop</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Living Room</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Kitchen</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Bedroom</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-4">About</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Our Story</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Blog</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-4">Resources</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Styling Guide</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">FAQ</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Privacy</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Terms</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-200 pt-8 mt-8 text-center">
+                <p class="text-gray-600">&copy; 2024 House of Glimmer. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('main [data-category]');
+        const heroSection = document.getElementById('shop-hero');
+        const heroTitle = document.getElementById('hero-title');
+        const heroSubtitle = document.getElementById('hero-subtitle');
+        const heroOverlay = document.getElementById('hero-overlay');
+        const activeClasses = ['bg-brandLavender', 'text-white', 'border-brandLavender'];
+        const inactiveClasses = ['border-gray-300', 'text-gray-700'];
+
+        const setActiveButton = (activeBtn) => {
+            filterButtons.forEach(btn => {
+                btn.classList.remove(...activeClasses);
+                if (!btn.classList.contains('filter-btn')) return;
+                btn.classList.add(...inactiveClasses);
+            });
+            activeBtn.classList.remove(...inactiveClasses);
+            activeBtn.classList.add(...activeClasses);
+        };
+
+        const applyFilter = (filter) => {
+            productCards.forEach(card => {
+                const categories = card.dataset.category.split(',').map(cat => cat.trim());
+                if (filter === 'all' || categories.includes(filter)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        };
+
+        const updateHeroBanner = (btn, filter) => {
+            if (heroSection && btn.dataset.banner) {
+                heroSection.style.backgroundImage = `url('${btn.dataset.banner}')`;
+                heroSection.style.backgroundSize = 'cover';
+                heroSection.style.backgroundPosition = 'center center';
+                heroSection.style.backgroundRepeat = 'no-repeat';
+                heroSection.style.backgroundColor = filter === 'all' ? '#f2f2f2' : '#f2f2f2';
+            }
+
+            if (heroOverlay) {
+                // lighter overlay for non-all to keep images bright
+                heroOverlay.style.opacity = filter === 'all' ? '0.25' : '0.12';
+            }
+        };
+
+        const updateHeroContent = (btn, filter) => {
+            if (!heroTitle || !heroSubtitle) return;
+
+            if (filter === 'all') {
+                heroTitle.textContent = btn.dataset.title || 'Shop';
+                heroSubtitle.textContent = btn.dataset.subtitle || '';
+            } else {
+                heroTitle.textContent = '';
+                heroSubtitle.textContent = '';
+            }
+        };
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.dataset.filter || 'all';
+                setActiveButton(btn);
+                applyFilter(filter);
+                updateHeroBanner(btn, filter);
+                updateHeroContent(btn, filter);
+            });
+        });
+
+        // Check for category parameter in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const categoryParam = urlParams.get('category');
+        
+        if (categoryParam) {
+            // Find the button for this category
+            const categoryBtn = document.querySelector(`[data-filter="${categoryParam}"]`);
+            if (categoryBtn) {
+                setActiveButton(categoryBtn);
+                applyFilter(categoryParam);
+                updateHeroBanner(categoryBtn, categoryParam);
+                updateHeroContent(categoryBtn, categoryParam);
+            } else {
+                // If category not found, default to all
+                const defaultBtn = document.querySelector('[data-filter="all"]');
+                if (defaultBtn) {
+                    setActiveButton(defaultBtn);
+                    applyFilter('all');
+                    updateHeroBanner(defaultBtn, 'all');
+                    updateHeroContent(defaultBtn, 'all');
+                }
+            }
+        } else {
+            // No category parameter, default to all
+        const defaultBtn = document.querySelector('[data-filter="all"]');
+        if (defaultBtn) {
+            setActiveButton(defaultBtn);
+            applyFilter('all');
+            updateHeroBanner(defaultBtn, 'all');
+            updateHeroContent(defaultBtn, 'all');
+            }
+        }
+    });
+</script>
+</body>
+</html>

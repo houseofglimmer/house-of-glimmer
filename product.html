@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House of Glimmer - Product Details</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Milonga&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'milonga': ['Milonga', 'cursive'],
+                        'serif': ['Milonga', 'cursive'],
+                    },
+                    colors: {
+                        brandGold: '#F2A03D',
+                        brandLavender: '#A693BF',
+                        brandNavy: '#111827',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Milonga', cursive;
+        }
+
+        .body-copy {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-serif {
+            font-family: 'Milonga', cursive;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .btn-glimmer {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .btn-glimmer::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-glimmer:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div id="header-container"></div>
+    <script src="header.js"></script>
+    <script>
+
+        function initHeader() {
+            // Header scroll effect
+            const header = document.getElementById('header');
+
+            if (header) {
+                window.addEventListener('scroll', () => {
+                    const currentScroll = window.pageYOffset;
+
+                    if (currentScroll > 100) {
+                        header.classList.add('shadow-lg');
+                    } else {
+                        header.classList.remove('shadow-lg');
+                    }
+                });
+
+                // Mobile menu toggle
+                const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+                const mobileMenu = document.getElementById('mobileMenu');
+
+                if (mobileMenuBtn && mobileMenu) {
+                    mobileMenuBtn.addEventListener('click', () => {
+                        mobileMenu.classList.toggle('hidden');
+                    });
+                }
+            }
+        }
+    </script>
+
+    <section class="relative h-[45vh] min-h-[320px] flex items-center justify-center overflow-hidden" style="background-image: url('images/BANNER.png'); background-size: cover; background-position: center;">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="relative z-10 text-center px-6">
+            <p class="text-sm uppercase tracking-[0.6em] text-white/70 mb-3">Product Spotlight</p>
+            <h1 id="product-hero-title" class="text-4xl md:text-5xl font-serif text-white tracking-[0.3em] uppercase">Wooden Kitchen Tools Set</h1>
+        </div>
+    </section>
+
+    <main class="relative bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6 py-20">
+            <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16">
+                <div class="lg:sticky lg:top-20 lg:self-start">
+                    <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
+                        <img id="product-image" src="images/kitchentools.jpg" alt="Wooden teak cooking utensils set detail view" class="w-full h-[650px] object-cover">
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="space-y-3">
+                        <span id="product-category" class="inline-flex items-center px-4 py-1 rounded-full text-xs uppercase tracking-[0.4em] text-white bg-brandLavender/90">Kitchen</span>
+                        <h2 id="product-name" class="text-4xl font-serif text-gray-900">Wooden Spoons for Cooking (7-Piece Teak Set)</h2>
+                        <p id="product-description" class="text-gray-600 leading-relaxed body-copy">
+                            Natural solid teak utensils with comfort grips, heat-safe for non-stick pans, and hand-sanded smooth so they won’t scratch your cookware. A complete 7-piece set ready for daily cooking.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <p id="product-price" class="text-3xl font-semibold text-brandGold">$22.99</p>
+                        <a id="product-buy-link" href="https://amzn.to/4ojHguf" target="_blank" rel="noopener noreferrer" class="btn-glimmer inline-flex items-center justify-center px-8 py-3 bg-brandNavy text-white rounded-md tracking-widest uppercase text-sm shadow-lg hover:bg-[#0b1220] transition" aria-label="Purchase product">
+                            Shop Now
+                        </a>
+                        <p class="text-xs uppercase tracking-[0.4em] text-gray-500">Affiliate link • Your support keeps the glimmer growing</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl shadow-md p-6 space-y-4">
+                        <h3 class="text-xl font-serif text-gray-900">Why we love it</h3>
+                        <ul id="product-why-list" class="space-y-3 text-gray-600 leading-relaxed body-copy">
+                            <li>• Smooth, non-scratch finish safe for all cookware</li>
+                            <li>• Includes ladle, turner, spatula, fork, and tasting spoon</li>
+                            <li>• Comes with matching holder for chic countertop display</li>
+                            <li>• Crafted by artisans using responsibly harvested wood</li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-3 text-gray-600 leading-relaxed">
+                        <h3 class="text-lg font-serif text-gray-900">Care Tips</h3>
+                        <p id="product-care" class="body-copy">Hand wash only with mild soap, then towel dry immediately. Refresh the finish monthly with a light coat of board oil to keep each piece glowing.</p>
+                    </div>
+                </div>
+            </div>
+
+            <section class="mt-20">
+                <div class="flex items-center justify-between mb-10">
+                    <div>
+                        <p class="text-sm uppercase tracking-[0.5em] text-gray-500">You may also like</p>
+                        <h2 class="text-3xl font-serif text-gray-900 mt-2">Glimmer-worthy pairings</h2>
+                    </div>
+                    <a href="shop.html" class="text-sm uppercase tracking-[0.4em] text-brandLavender hover:text-brandGold transition">Back to Shop</a>
+                </div>
+
+                <div id="recommendations-container" class="grid gap-8 md:grid-cols-2 lg:grid-cols-4 items-stretch">
+                    <!-- Recommendations will be dynamically loaded here -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 py-12">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 mb-8">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">House of Glimmer</h3>
+                    <p class="text-gray-600 mb-6">Creating beautiful spaces, one piece at a time.</p>
+                    <div class="flex gap-4">
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg border-2 border-gray-300 flex items-center justify-center hover:border-gray-400 transition-colors" aria-label="Facebook">
+                            <svg class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg border-2 border-gray-300 flex items-center justify-center hover:border-gray-400 transition-colors" aria-label="LinkedIn">
+                            <svg class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg border-2 border-gray-300 flex items-center justify-center hover:border-gray-400 transition-colors" aria-label="YouTube">
+                            <svg class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg border-2 border-gray-300 flex items-center justify-center hover:border-gray-400 transition-colors" aria-label="Instagram">
+                            <svg class="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-4">Shop</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Living Room</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Kitchen</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Bedroom</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-4">About</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Our Story</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Blog</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-gray-900 mb-4">Resources</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Styling Guide</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">FAQ</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Privacy</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-gray-900 transition-colors">Terms</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-200 pt-8 mt-8 text-center">
+                <p class="text-gray-600">&copy; 2024 House of Glimmer. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const PRODUCTS = {
+            kitchentools: {
+                id: 'kitchentools',
+                heroTitle: 'Wooden Spoons for Cooking (7-Piece Teak Set)',
+                category: 'Kitchen',
+                name: 'Wooden Spoons for Cooking, Natural Teak Utensils Comfort Grip Set',
+                image: 'images/kitchentools.jpg',
+                imageAlt: 'Wooden teak cooking utensils set detail view',
+                price: '$22.99',
+                buyLink: 'https://amzn.to/4ojHguf',
+                description: 'Natural solid teak wooden utensils with comfort grips. Hand-sanded smooth so they will not scratch non-stick pans. Complete 7-piece set ready for everyday cooking and serving.',
+                why: [
+                    'Natural teak wood, dense grain, crack-resistant and durable',
+                    'Complete 7-piece cooking tools set with hanging holes for storage',
+                    'Heat resistant and safe for non-stick pans; won’t melt or scratch',
+                    'Easy to clean by hand with warm soapy water; quick to dry and hang'
+                ],
+                care: 'Hand wash with warm soapy water, avoid soaking, and hang or towel dry promptly. Condition with food-safe oil occasionally to maintain the finish.'
+            },
+            sidetable: {
+                id: 'sidetable',
+                heroTitle: 'Midnight Round Side Table',
+                category: 'Living Room',
+                name: 'Midnight Round Side Table',
+                image: 'images/sidetable.jpg',
+                imageAlt: 'Modern two-tiered round side table detail view',
+                price: '$19.99',
+                buyLink: 'https://amzn.to/47yjxiN',
+                description: 'A slim, two-tiered side table that tucks beside sofas and reading chairs, ready for candles, novels, and nightcaps.',
+                why: [
+                    'Compact footprint fits small spaces and cozy corners',
+                    'Two shelves for styling books, plants, and decor',
+                    'Mixed materials give a modern, collected feel',
+                    'Easy to move wherever the glow is needed most'
+                ],
+                care: 'Dust regularly with a soft cloth. Wipe spills promptly and avoid harsh cleaners to preserve the finish.'
+            },
+            'mushroom-paper-towel-holder': {
+                id: 'mushroom-paper-towel-holder',
+                heroTitle: 'Whimsy Mushroom Paper Towel Holder',
+                category: 'Kitchen',
+                name: 'Whimsy Mushroom Paper Towel Holder',
+                image: 'images/mushroompapertowelholder.jpg',
+                imageAlt: 'Wooden mushroom paper towel holder on a counter',
+                price: '$21.50',
+                buyLink: 'https://amzn.to/4b2OrTI',
+                description: 'Hand-carved wood with a sculpted mushroom cap finial turns an everyday roll into a charming countertop moment.',
+                why: [
+                    'Weighted base keeps rolls steady while you tear',
+                    'Warm woodgrain adds organic texture to kitchens',
+                    'Compact footprint fits beside sinks or coffee bars',
+                    'Playful silhouette pairs with cottage and modern styles'
+                ],
+                care: 'Wipe clean with a dry or slightly damp cloth. Avoid soaking wood; condition occasionally with food-safe oil to maintain luster.'
+            },
+            'pendant-light': {
+                id: 'pendant-light',
+                heroTitle: 'Tiffany Pendant Light',
+                category: 'Kitchen',
+                name: 'Tiffany Pendant Light Handmade Agate Slice Artistic Lamp',
+                image: 'images/pendantlight.jpg',
+                imageAlt: 'Tiffany pendant light with handmade agate slice artistic design',
+                price: '$199.00',
+                buyLink: 'https://amzn.to/497w1A8',
+                description: 'A 12" Wabi Sabi vintage chandelier rustic ceiling light featuring raw agate slices with unique veins. When lit, warm glow filters through stone veins, casting a rustic-yet-luxurious ambience like a natural artwork.',
+                why: [
+                    'Natural stone & handcrafted artistic lamp with raw agate slices',
+                    'Raw agate is an Eastern auspicious stone for good fortune and protection',
+                    '12-inch diameter lampshade with 47-inch adjustable hanging chain',
+                    'Perfect lighting for dining rooms, bedrooms, kitchen islands, foyers, and cafes',
+                    'Complements vintage, wabi-sabi, bohemian, and eclectic decor styles'
+                ],
+                care: 'Natural stone is unadorned & subtly dark; instantly translucent & vibrant when lit! Use ≤60W high-bright warm LED bulbs to enhance its rich hues. The material of stone lampshade is protected with mineral oil. Wear gloves before installation. Slight thickness/shape/seam variations are normal (handcrafted uniqueness).'
+            },
+            'floral-rug': {
+                id: 'floral-rug',
+                heroTitle: 'Floral Vintage Distress Print Area Rug',
+                category: 'Kitchen',
+                name: 'Floral Vintage Distress Print Area Rug 8\'x10\'',
+                image: 'images/floralrug.jpg',
+                imageAlt: 'Floral vintage distress print pattern area rug',
+                price: '$76.99',
+                buyLink: 'https://amzn.to/3N0MIVj',
+                description: 'Machine washable, non-slip area rug with floral vintage distress print pattern medallion design. Features water-repellent surface for easy cleanup and low-pile soft material that feels great underfoot.',
+                why: [
+                    'Machine washable rugs easy to clean with water-repellent surface',
+                    'Soft surface and non-slip backing keeps rug in place',
+                    'Sunflower series aesthetic with distress vintage floral pattern',
+                    'Thin design allows for easy placement behind doors and under furniture',
+                    'Suitable for living room, bedroom, kitchen, entryway, and door mat use'
+                ],
+                care: 'Simply use a towel to promptly wipe away any spills. For localized stains, use a cleaning agent and a damp cloth for spot cleaning, or utilize a vacuum cleaner for overall maintenance. You can also put the rug in a washing machine as it is machine washable. Creases from packaging should naturally disappear within a few days with regular use.'
+            },
+            'blue-ceramic-vase': {
+                id: 'blue-ceramic-vase',
+                heroTitle: 'Blue Ceramic Vase Set',
+                category: 'Kitchen',
+                name: 'Blue Ceramic Vase Set - 3 Blue Small Vases',
+                image: 'images/bluebase.jpg',
+                imageAlt: 'Blue ceramic vase set of 3 small farmhouse vases',
+                price: '$35.99',
+                buyLink: 'https://amzn.to/4aDzkjE',
+                description: 'Farmhouse country flower vase home decor set of 3 blue ceramic vases. Perfect for living room decoration, table decoration, fireplace decor, and entrance decorations centerpieces.',
+                why: [
+                    'Set of 3 decorative blue ceramic vases with delicate texture',
+                    'Modern farmhouse design measuring 3"L x 3"W x 10"H, 7.5"H, and 5"H',
+                    'Long lasting and maintenance free, crafted from 100% ceramic',
+                    'Versatile for modern farmhouse, refined rustic, boho, classic charm styles',
+                    'Perfect for weddings, Christmas, housewarming, and makes a great gift'
+                ],
+                care: 'Blue ceramic vases have a delicate texture and are easy to wash, maintenance free. Resistant to dirt and play a role in enhancing interior decoration.'
+            },
+            'drawer-organizer': {
+                id: 'drawer-organizer',
+                heroTitle: 'Bamboo Kitchen Drawer Organizer',
+                category: 'Kitchen',
+                name: 'ROYAL CRAFT WOOD Luxury Bamboo Kitchen Drawer Organizer',
+                image: 'images/drawerorganizer.jpg',
+                imageAlt: 'Bamboo kitchen drawer organizer for silverware and utensils',
+                price: '$39.97',
+                buyLink: 'https://amzn.to/4qF0NGp',
+                description: 'Expandable bamboo drawer organizer ideal for saving kitchen storage space. Features adjustable storage drawers that expand from 17"x13" to 17x19.6" wide with 1.9" deep slots and 9 compartments.',
+                why: [
+                    'Expandable design fits most standard kitchen drawers (17"x13" to 17x19.6" wide)',
+                    'Keep your kitchen drawers organized with 9 deep compartments',
+                    'Multi-purpose use for kitchen, office, dresser, makeup drawer, crafting corner',
+                    'Clutter-free storage for utensils, silverware, and kitchen tools',
+                    'Cooking is a breeze with cutlery clearly visible in one place'
+                ],
+                care: 'Measure your drawers prior to purchase as organizers are large in size. Simply pull apart from the sides for additional storage space and a more secure fit for wider drawers. Different sized compartments allow for standard silverware and large utensil placement.'
+            },
+            'fruit-basket': {
+                id: 'fruit-basket',
+                heroTitle: 'Acacia 3 Tier Fruit Basket',
+                category: 'Kitchen',
+                name: 'HOLANA Acacia 3 Tier Fruit Basket for Counter',
+                image: 'images/fruitbasket.jpg',
+                imageAlt: 'Acacia wood 3 tier fruit basket for kitchen counter',
+                price: '$39.98',
+                buyLink: 'https://amzn.to/4spTTGx',
+                description: 'Wooden fruit bowl for kitchen counter organizer and produce storage. Features premium acacia wood construction with 20LBS weight capacity and non-slip pads for stable placement.',
+                why: [
+                    'Versatile 3 tier fruit basket keeps produce visible and accessible',
+                    'Premium acacia wood construction for sturdy and beautiful design',
+                    '20LBS weight capacity for vegetables, fruits, and other essentials',
+                    'Stable with non-slip pads to protect kitchen surface from scratches',
+                    'Functional wooden kitchen accessory for snack display and storage',
+                    'Quick assembly with clear screws and sturdy joints'
+                ],
+                care: 'Designed for hassle-free setup. The durable structure is firm and strong, keeping everything neat and safe while within reach. Non-slip pads underneath stay securely in place while protecting your kitchen surface.'
+            },
+            'food-jars': {
+                id: 'food-jars',
+                heroTitle: 'Glass Food Storage Jars Set',
+                category: 'Kitchen',
+                name: 'Vtopmart Glass Food Storage Jars, 7 Pack Kitchen Containers',
+                image: 'images/container.jpg',
+                imageAlt: 'Glass food storage jars with airtight bamboo wooden lids',
+                price: '$25.19',
+                buyLink: 'https://amzn.to/3MXjiYa',
+                description: 'Set of 7 various sizes glass jars with airtight bamboo wooden lids for pasta, cookies, nuts, coffee beans, cereal, canisters set for flour, and pantry organization. BPA free.',
+                why: [
+                    'Set of 7 various sizes glass jars (15oz to 74oz) for different storage needs',
+                    'Natural bamboo lids with durable silicone sealing rings for airtight storage',
+                    'Good for dry food storage: pasta, nuts, flour, candies, cereals, spices',
+                    'Premium glass material made of high borosilicate resistant to 570°F',
+                    'Easy to clean with wide mouth and visible jar for filling and taking',
+                    'BPA free material for safe food storage'
+                ],
+                care: 'Cleaning the lid with a cloth, and if the lid is washed directly with water, it must be completely dried before use. The glass jar is made of high borosilicate that can resist high temperature by 570°F and has no low temperature limit. You can put them in your kitchen, pantry, living room or refrigerator.'
+            },
+            'botanical-calendar': {
+                id: 'botanical-calendar',
+                heroTitle: 'Botanical Wall Calendar 2026',
+                category: 'Living Room',
+                name: 'Botanical Wall Calendar 2026 12" x 12" FSC® Plastic Free',
+                image: 'images/botanicalcalendar.jpg',
+                imageAlt: 'Botanical wall calendar 2026 with fruits design',
+                price: '$10.99',
+                buyLink: 'https://amzn.to/3NdqTBM',
+                description: '12" x 12" FSC® plastic free wall calendar that starts week on Sunday. Features botanical fruits design perfect for family planning, work, school, and keeping track of important dates.',
+                why: [
+                    'Stay organized all year with clear layouts for planning work, school, and family activities',
+                    'Versatile wall design perfect for office, classroom, or kitchen',
+                    'Monthly & weekly planning with spacious grids for notes, reminders, and goals',
+                    'Perfect for teachers & students supporting school schedules',
+                    'Family & kids friendly helping children develop time-management skills',
+                    'FSC® certified and plastic free for eco-conscious consumers'
+                ],
+                care: 'Hang on wall for easy monthly viewing. Keep track of important dates and activities throughout the year.'
+            },
+            'round-table': {
+                id: 'round-table',
+                heroTitle: 'Round Side Table',
+                category: 'Living Room',
+                name: 'Round Side Table, Small Drink Table for Small Spaces',
+                image: 'images/roundtable.jpg',
+                imageAlt: 'Round side table with solid wood legs for living room',
+                price: '$39.99',
+                buyLink: 'https://amzn.to/4biqhou',
+                description: 'Modern accent nightstand with solid wood leg featuring walnut-grain pattern. Compact 11.8" diameter x 21.6" high design perfect for small spaces, living room, bedroom, corners, and office.',
+                why: [
+                    'Round side table features walnut-grain pattern with distinctive color for stylish appearance',
+                    'Rounded tabletop makes it safer with wooden balls as connectors adding elegant touch',
+                    'Sturdy structure crafted from high-density MDF with water-resistant coating',
+                    'Multiple functions: side table, couch end table, nightstand, drink table, or plant stand',
+                    'Compact and lightweight design saves space and allows effortless placement anywhere',
+                    'Easy assembly without any tools, following user-friendly instructions in 5 minutes'
+                ],
+                care: 'Dust regularly with a soft cloth. Wipe spills promptly and avoid harsh cleaners to preserve the finish. The base has a thickened double-layer design ensuring stability and preventing sliding or tilting.'
+            },
+            'farmhouse-vase': {
+                id: 'farmhouse-vase',
+                heroTitle: 'Farmhouse Vase Set of 3',
+                category: 'Living Room',
+                name: 'Farmhouse Vase for Home Decor, Ceramic Vase Set of 3',
+                image: 'images/farmhousevase.jpg',
+                imageAlt: 'Farmhouse ceramic vase set of 3 vintage flower vases',
+                price: '$29.99',
+                buyLink: 'https://amzn.to/4989rHD',
+                description: 'Vintage flower vase set of 3 with farmhouse ribbed design. Suitable for home decor, living room, shelf decor, dining table decor. Features rustic retro style with waterproof design.',
+                why: [
+                    'Farmhouse ribbed vase design with vintage thread design, elegant and beautiful',
+                    'Rustic retro style terracotta vase that embraces the retro trend',
+                    'Powerful decorative functions suitable for dried flowers, pampas grass, fresh flowers, and cotton',
+                    'Made of high-quality ceramics, sturdy and durable with heights of 5.3IN, 8IN, 10.6IN',
+                    'Perfect for home decor living room, coffee table decor, shelf decor, dining table decor',
+                    'Waterproof design allows you to also grow flowers'
+                ],
+                care: 'Surface effect of this rustic vase set are purely handmade, and each product is not exactly the same. The color treatment and mottled retro effect will be different for each product. Clean with a damp cloth as needed.'
+            },
+            'eucalyptus-plant': {
+                id: 'eucalyptus-plant',
+                heroTitle: 'Artificial Eucalyptus Stems in Glass Vase',
+                category: 'Living Room',
+                name: 'VIERENA 17.5" Artificial Eucalyptus Stems in Glass Vase',
+                image: 'images/eucalyptusplant.jpg',
+                imageAlt: 'Artificial eucalyptus stems in glass vase with faux water',
+                price: '$19.99',
+                buyLink: 'https://amzn.to/3N2dyMM',
+                description: '17.5" artificial eucalyptus stems in glass vase with faux water. Fake plant eucalyptus leaves with white seeds for centerpiece table decorations, farmhouse wedding, home greenery decor in sage green.',
+                why: [
+                    'Lifelike artificial eucalyptus with 6 pieces sage green stems in glass vase',
+                    'Clear glass vase containing realistic artificial water and faux eucalyptus stems',
+                    'Made of high quality plastic for realistic look with intricate textural details',
+                    'Leaves specially treated with white powder for added authenticity',
+                    'Perfect for kitchen, bathroom, bookshelf, cabinet, work desk, coffee table, dining table',
+                    'Great gift for housewarming, Christmas gifts, and party decorations'
+                ],
+                care: 'Artificial eucalyptus stems may be somewhat deformed during handling, storage and transportation. After receiving the product, adjust the leaf to restore its shape or leave it for two days and it will return to its original shape. Dust with a soft cloth as needed.'
+            },
+            'hanging-plants': {
+                id: 'hanging-plants',
+                heroTitle: 'Fake Hanging Plants',
+                category: 'Living Room',
+                name: 'BLEUM CADE Fake Hanging Plants, 2pcs Artificial Hanging Plant',
+                image: 'images/hangingplants.jpg',
+                imageAlt: 'Fake hanging plants artificial pothos vines greenery',
+                price: '$9.98',
+                buyLink: 'https://amzn.to/4pqGWd8',
+                description: '2pcs artificial hanging plant, faux pothos vines greenery for wall home living room office indoor outdoor decor. Set includes 2 pieces pothos ivy vines with 43.3" vine lengths.',
+                why: [
+                    'Lifelike and vibrant appearance with realistic details, adding greenery year-round',
+                    'Made from high-quality, harmless PVC plastic that is waterproof and durable',
+                    'Great for home and yard decor: walls, tables, shelves, windowsills, living room, bedroom, bathroom, kitchen, office, balcony, or yard',
+                    'Low maintenance: no sunlight, moisture, or maintenance required, never withers',
+                    'Includes artificial butterflies as a gift for extra touch of realism',
+                    'Fresh green color with natural tint giving elegant look for indoor and outdoor decoration'
+                ],
+                care: 'Remove dust with a damp cloth or hair dryer occasionally. Mix and match with other plants for personalized DIY space. These fake hanging plants will never wither and require no maintenance.'
+            },
+            'faux-blanket': {
+                id: 'faux-blanket',
+                heroTitle: 'COOVA Faux Fur Throw Blanket',
+                category: 'Living Room',
+                name: 'COOVA Faux Fur Throw Blanket for Couch',
+                image: 'images/fauxblanket.jpg',
+                imageAlt: 'COOVA faux fur throw blanket cozy soft fuzzy plush rabbit fur bubble blanket',
+                price: '$37.99',
+                buyLink: 'https://amzn.to/49kTWeh',
+                description: 'Cozy soft and fuzzy plush rabbit fur bubble blanket for sofa bedroom living room. 50x60 inches tie dye brown. Made from 700GSM high-weight ultra-fine microfiber.',
+                why: [
+                    'Premium fabric made from 700GSM high-weight ultra-fine microfiber, exceptionally soft and fluffy',
+                    'Modern design with unique bubble-shaped high-low wave pattern serving as functional piece and stylish accent',
+                    'Rich texture and luxurious look effortlessly blends with any interior style',
+                    'Perfect gift for parents, friends, partners, and children for birthdays, housewarmings, anniversaries, holidays',
+                    'Easy to clean: machine washable and can be tumble dried on low',
+                    'Retains original softness and color without shrinking, fading, or pilling after multiple washes'
+                ],
+                care: 'Machine washable and can be tumble dried on low. Due to compact packaging, the bubble design may become flattened due to compression. Please wash and tumble dry in a washing machine to restore the original fullness of the bubble design.'
+            },
+            'living-room-rug': {
+                id: 'living-room-rug',
+                heroTitle: 'Black Boho Living Room Rug',
+                category: 'Living Room',
+                name: 'Black Boho Living Room Rug 5x7, Washable Dark Vintage Moody Low Pile Non Slip Carpet',
+                image: 'images/livingroomrug.jpg',
+                imageAlt: 'Black boho living room rug 5x7 washable dark vintage moody low pile non slip carpet',
+                price: '$47.48',
+                buyLink: 'https://amzn.to/45hnZT1',
+                description: 'Washable dark vintage moody low pile non slip carpet for bedroom, dining room, office, farmhouse, retro area rug indoor decor. Features tribal distressed elegance with gracefully faded charcoal base.',
+                why: [
+                    'Machine washable: vacuum regularly or toss in the machine for deeper clean',
+                    'Non-slip features with strong non-slip rubber backing designed to stay firmly in place',
+                    'Kids & pets friendly: low-pile (0.25") rug resists messes like pet hair, dander, and stains',
+                    'Tribal distressed elegance with dusky tones accented by soft hints of beige, cream, gray, taupe, gold, and ivory',
+                    'Color palette blends free-spirited charm of bohemian style with timeless elegance of antique pieces',
+                    'Perfect as mat for kitchen, dorm, office desk chair, throw rugs, playroom rugs and rug under bed'
+                ],
+                care: 'Folded rugs may have creases when they arrive. Roll out the rug and allow time to flatten and settle. When vacuuming, use soft roller cleaner head/dusting brush only and vacuum on the lowest setting. Machine wash gently in cold water and never bleach. Air dry or dry on air-only cycle without heat.'
+            },
+        };
+
+        function loadProductFromUrl() {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('product') || 'kitchentools';
+            const product = PRODUCTS[id] || PRODUCTS.kitchentools;
+
+            const heroTitle = document.getElementById('product-hero-title');
+            const img = document.getElementById('product-image');
+            const category = document.getElementById('product-category');
+            const name = document.getElementById('product-name');
+            const description = document.getElementById('product-description');
+            const price = document.getElementById('product-price');
+            const buyLink = document.getElementById('product-buy-link');
+            const whyList = document.getElementById('product-why-list');
+            const care = document.getElementById('product-care');
+
+            if (!heroTitle || !img || !category || !name || !description || !price || !buyLink || !whyList || !care) {
+                return;
+            }
+
+            heroTitle.textContent = product.heroTitle;
+            name.textContent = product.name;
+            category.textContent = product.category;
+            img.src = product.image;
+            img.alt = product.imageAlt;
+            description.textContent = product.description;
+            price.textContent = product.price;
+            buyLink.href = product.buyLink;
+            buyLink.setAttribute('aria-label', 'Purchase ' + product.name);
+
+            whyList.innerHTML = '';
+            product.why.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = '• ' + item;
+                whyList.appendChild(li);
+            });
+
+            care.textContent = product.care;
+
+            // Load recommendations for the same category
+            loadRecommendations(product.category, product.id);
+        }
+
+        function loadRecommendations(category, currentProductId) {
+            const container = document.getElementById('recommendations-container');
+            if (!container) return;
+
+            // Filter products by category, excluding the current product
+            const relatedProducts = Object.values(PRODUCTS).filter(
+                p => p.category === category && p.id !== currentProductId
+            );
+
+            // Limit to 4 recommendations
+            const recommendations = relatedProducts.slice(0, 4);
+
+            // If no products in same category, show products from other categories
+            if (recommendations.length === 0) {
+                const otherProducts = Object.values(PRODUCTS).filter(
+                    p => p.id !== currentProductId
+                ).slice(0, 4);
+                renderRecommendations(otherProducts, container);
+                return;
+            }
+
+            renderRecommendations(recommendations, container);
+        }
+
+        function renderRecommendations(products, container) {
+            container.innerHTML = '';
+
+            products.forEach(product => {
+                const article = document.createElement('article');
+                article.className = 'bg-white rounded-3xl shadow-lg overflow-hidden flex flex-col h-full';
+
+                article.innerHTML = `
+                    <a href="product.html?product=${product.id}" class="block flex-shrink-0">
+                        <img src="${product.image}" alt="${product.imageAlt}" class="w-full h-[280px] object-cover transition-transform duration-500 hover:scale-105">
+                    </a>
+                    <div class="p-6 flex flex-col flex-1 min-h-0">
+                        <div class="space-y-2 flex-1">
+                            <p class="text-xs uppercase tracking-[0.4em] text-gray-500">${product.category}</p>
+                            <a href="product.html?product=${product.id}" class="text-xl font-serif text-gray-900 hover:text-brandLavender transition block">${product.name}</a>
+                        </div>
+                        <div class="mt-4 flex items-center justify-between flex-shrink-0">
+                            <span class="text-lg font-semibold text-brandGold">${product.price}</span>
+                            <a href="${product.buyLink}" target="_blank" rel="noopener noreferrer" class="btn-glimmer inline-flex items-center px-4 py-2 border border-brandLavender text-brandLavender rounded-md tracking-wide hover:bg-brandLavender hover:text-white transition" aria-label="View ${product.name} on affiliate shop" tabindex="0" onkeydown="if(event.key==='Enter'){ window.open(this.href, '_blank'); }">
+                                View
+                            </a>
+                        </div>
+                    </div>
+                `;
+
+                container.appendChild(article);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', loadProductFromUrl);
+    </script>
+
+</body>
+</html>
